@@ -1,0 +1,33 @@
+Début de tableau
+Début de légende
+Contenu de cellule/en-tête/légende
+Fin de légende
+Début de bloc d'en-têtes
+Début de ligne
+Début de cellule d'en-tête
+Contenu de cellule/en-tête/légende
+Fin de cellule d'en-tête
+Début de cellule d'en-tête
+Contenu de cellule/en-tête/légende
+Fin de cellule d'en-tête
+Fin de ligne
+Fin de bloc d'en-têtes
+Début de bloc de corps
+Début de ligne
+Début de cellule
+Contenu de cellule/en-tête/légende
+Fin de cellule
+Début de cellule
+Contenu de cellule/en-tête/légende
+Fin de cellule
+Fin de ligne
+Début de ligne
+Début de cellule
+Contenu de cellule/en-tête/légende
+Fin de cellule
+Début de cellule
+Contenu de cellule/en-tête/légende
+Fin de cellule
+Fin de ligne
+Fin de bloc de corps
+Fin de tableau
