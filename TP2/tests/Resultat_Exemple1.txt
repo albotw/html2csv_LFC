@@ -1,0 +1,18 @@
+Début de tableau
+Début de bloc de corps
+Début de ligne
+Début de cellule
+Début de cellule d'en-tête
+Début de bloc d'en-têtes
+Début de légende
+Fin de tableau
+Fin de bloc de corps
+Fin de ligne
+Fin de cellule
+Fin de cellule d'en-tête
+Fin de bloc d'en-têtes
+Fin de légende
+Début de tableau
+Début de cellule
+Début de cellule
+Début de cellule d'en-tête
