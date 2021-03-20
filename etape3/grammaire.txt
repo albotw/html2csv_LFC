@@ -4,11 +4,11 @@ S
 Règles:
 S -> <table> E A </table>
 A -> D | <thead> G </thead> C | C | λ
-B -> <td></td> B | λ
+B -> <td> CONTENU </td> B | λ
 C -> <tbody> D </tbody> | λ
 D -> <tr> B </tr> D | λ
-E -> <caption> </caption> | λ
-F -> <th></th> F | λ
+E -> <caption> CONTENU </caption> | λ
+F -> <th> CONTENU </th> F | λ
 G -> <tr> F </tr> 
 
 
@@ -28,6 +28,7 @@ Symboles terminaux:
 </tbody>
 <caption>
 </caption>
+CONTENU
 
 Symboles non terminaux:
 S, A, B, C, D, E, F, G

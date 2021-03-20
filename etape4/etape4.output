@@ -1,0 +1,601 @@
+Grammaire
+
+    0 $accept: liste_tableaux $end
+
+    1 liste_tableaux: %empty
+    2               | tableau liste_tableaux
+
+    3 tableau: DEBTAB legende headers body_no_header FINTAB
+    4        | DEBTAB legende body_with_header FINTAB
+    5        | DEBTAB legende body_no_header FINTAB
+    6        | DEBTAB header body_no_header FINTAB
+    7        | DEBTAB desc_no_header FINTAB
+    8        | DEBTAB desc_with_header FINTAB
+
+    9 legende: DEBCAP CONTENU FINCAP
+
+   10 headers: DEBHEAD ligne_header FINHEAD
+
+   11 ligne_header: DEBLIG liste_header FINLIG
+
+   12 liste_header: header
+   13             | header liste_header
+
+   14 header: DEBCELENT CONTENU FINCELENT
+
+   15 body_with_header: DEBBODY desc_with_header FINBODY
+
+   16 body_no_header: DEBBODY desc_no_header FINBODY
+
+   17 desc_with_header: ligne_header liste_lignes
+
+   18 desc_no_header: liste_lignes
+
+   19 liste_lignes: ligne
+   20             | ligne liste_lignes
+
+   21 ligne: DEBLIG liste_cells FINLIG
+
+   22 liste_cells: cell
+   23            | cell liste_cells
+
+   24 cell: DEBCEL CONTENU FINCEL
+   25     | DEBCEL tableau FINCEL
+
+
+Terminaux, suivis des règles où ils apparaissent
+
+    $end (0) 0
+    error (256)
+    DEBTAB (258) 3 4 5 6 7 8
+    DEBLIG (259) 11 21
+    DEBCEL (260) 24 25
+    DEBCELENT (261) 14
+    DEBHEAD (262) 10
+    DEBBODY (263) 15 16
+    DEBCAP (264) 9
+    FINTAB (265) 3 4 5 6 7 8
+    FINLIG (266) 11 21
+    FINCEL (267) 24 25
+    FINCELENT (268) 14
+    FINHEAD (269) 10
+    FINBODY (270) 15 16
+    FINCAP (271) 9
+    CONTENU (272) 9 14 24
+
+
+Non-terminaux, suivis des règles où ils apparaissent
+
+    $accept (18)
+        à gauche: 0
+    liste_tableaux (19)
+        à gauche: 1 2
+        à droite: 0 2
+    tableau (20)
+        à gauche: 3 4 5 6 7 8
+        à droite: 2 25
+    legende (21)
+        à gauche: 9
+        à droite: 3 4 5
+    headers (22)
+        à gauche: 10
+        à droite: 3
+    ligne_header (23)
+        à gauche: 11
+        à droite: 10 17
+    liste_header (24)
+        à gauche: 12 13
+        à droite: 11 13
+    header (25)
+        à gauche: 14
+        à droite: 6 12 13
+    body_with_header (26)
+        à gauche: 15
+        à droite: 4
+    body_no_header (27)
+        à gauche: 16
+        à droite: 3 5 6
+    desc_with_header (28)
+        à gauche: 17
+        à droite: 8 15
+    desc_no_header (29)
+        à gauche: 18
+        à droite: 7 16
+    liste_lignes (30)
+        à gauche: 19 20
+        à droite: 17 18 20
+    ligne (31)
+        à gauche: 21
+        à droite: 19 20
+    liste_cells (32)
+        à gauche: 22 23
+        à droite: 21 23
+    cell (33)
+        à gauche: 24 25
+        à droite: 22 23
+
+
+État 0
+
+    0 $accept: . liste_tableaux $end
+
+    DEBTAB  décalage et aller à l'état 1
+
+    $défaut  réduction par utilisation de la règle 1 (liste_tableaux)
+
+    liste_tableaux  aller à l'état 2
+    tableau         aller à l'état 3
+
+
+État 1
+
+    3 tableau: DEBTAB . legende headers body_no_header FINTAB
+    4        | DEBTAB . legende body_with_header FINTAB
+    5        | DEBTAB . legende body_no_header FINTAB
+    6        | DEBTAB . header body_no_header FINTAB
+    7        | DEBTAB . desc_no_header FINTAB
+    8        | DEBTAB . desc_with_header FINTAB
+
+    DEBLIG     décalage et aller à l'état 4
+    DEBCELENT  décalage et aller à l'état 5
+    DEBCAP     décalage et aller à l'état 6
+
+    legende           aller à l'état 7
+    ligne_header      aller à l'état 8
+    header            aller à l'état 9
+    desc_with_header  aller à l'état 10
+    desc_no_header    aller à l'état 11
+    liste_lignes      aller à l'état 12
+    ligne             aller à l'état 13
+
+
+État 2
+
+    0 $accept: liste_tableaux . $end
+
+    $end  décalage et aller à l'état 14
+
+
+État 3
+
+    2 liste_tableaux: tableau . liste_tableaux
+
+    DEBTAB  décalage et aller à l'état 1
+
+    $défaut  réduction par utilisation de la règle 1 (liste_tableaux)
+
+    liste_tableaux  aller à l'état 15
+    tableau         aller à l'état 3
+
+
+État 4
+
+   11 ligne_header: DEBLIG . liste_header FINLIG
+   21 ligne: DEBLIG . liste_cells FINLIG
+
+    DEBCEL     décalage et aller à l'état 16
+    DEBCELENT  décalage et aller à l'état 5
+
+    liste_header  aller à l'état 17
+    header        aller à l'état 18
+    liste_cells   aller à l'état 19
+    cell          aller à l'état 20
+
+
+État 5
+
+   14 header: DEBCELENT . CONTENU FINCELENT
+
+    CONTENU  décalage et aller à l'état 21
+
+
+État 6
+
+    9 legende: DEBCAP . CONTENU FINCAP
+
+    CONTENU  décalage et aller à l'état 22
+
+
+État 7
+
+    3 tableau: DEBTAB legende . headers body_no_header FINTAB
+    4        | DEBTAB legende . body_with_header FINTAB
+    5        | DEBTAB legende . body_no_header FINTAB
+
+    DEBHEAD  décalage et aller à l'état 23
+    DEBBODY  décalage et aller à l'état 24
+
+    headers           aller à l'état 25
+    body_with_header  aller à l'état 26
+    body_no_header    aller à l'état 27
+
+
+État 8
+
+   17 desc_with_header: ligne_header . liste_lignes
+
+    DEBLIG  décalage et aller à l'état 28
+
+    liste_lignes  aller à l'état 29
+    ligne         aller à l'état 13
+
+
+État 9
+
+    6 tableau: DEBTAB header . body_no_header FINTAB
+
+    DEBBODY  décalage et aller à l'état 30
+
+    body_no_header  aller à l'état 31
+
+
+État 10
+
+    8 tableau: DEBTAB desc_with_header . FINTAB
+
+    FINTAB  décalage et aller à l'état 32
+
+
+État 11
+
+    7 tableau: DEBTAB desc_no_header . FINTAB
+
+    FINTAB  décalage et aller à l'état 33
+
+
+État 12
+
+   18 desc_no_header: liste_lignes .
+
+    $défaut  réduction par utilisation de la règle 18 (desc_no_header)
+
+
+État 13
+
+   19 liste_lignes: ligne .
+   20             | ligne . liste_lignes
+
+    DEBLIG  décalage et aller à l'état 28
+
+    $défaut  réduction par utilisation de la règle 19 (liste_lignes)
+
+    liste_lignes  aller à l'état 34
+    ligne         aller à l'état 13
+
+
+État 14
+
+    0 $accept: liste_tableaux $end .
+
+    $défaut  accepter
+
+
+État 15
+
+    2 liste_tableaux: tableau liste_tableaux .
+
+    $défaut  réduction par utilisation de la règle 2 (liste_tableaux)
+
+
+État 16
+
+   24 cell: DEBCEL . CONTENU FINCEL
+   25     | DEBCEL . tableau FINCEL
+
+    DEBTAB   décalage et aller à l'état 1
+    CONTENU  décalage et aller à l'état 35
+
+    tableau  aller à l'état 36
+
+
+État 17
+
+   11 ligne_header: DEBLIG liste_header . FINLIG
+
+    FINLIG  décalage et aller à l'état 37
+
+
+État 18
+
+   12 liste_header: header .
+   13             | header . liste_header
+
+    DEBCELENT  décalage et aller à l'état 5
+
+    $défaut  réduction par utilisation de la règle 12 (liste_header)
+
+    liste_header  aller à l'état 38
+    header        aller à l'état 18
+
+
+État 19
+
+   21 ligne: DEBLIG liste_cells . FINLIG
+
+    FINLIG  décalage et aller à l'état 39
+
+
+État 20
+
+   22 liste_cells: cell .
+   23            | cell . liste_cells
+
+    DEBCEL  décalage et aller à l'état 16
+
+    $défaut  réduction par utilisation de la règle 22 (liste_cells)
+
+    liste_cells  aller à l'état 40
+    cell         aller à l'état 20
+
+
+État 21
+
+   14 header: DEBCELENT CONTENU . FINCELENT
+
+    FINCELENT  décalage et aller à l'état 41
+
+
+État 22
+
+    9 legende: DEBCAP CONTENU . FINCAP
+
+    FINCAP  décalage et aller à l'état 42
+
+
+État 23
+
+   10 headers: DEBHEAD . ligne_header FINHEAD
+
+    DEBLIG  décalage et aller à l'état 43
+
+    ligne_header  aller à l'état 44
+
+
+État 24
+
+   15 body_with_header: DEBBODY . desc_with_header FINBODY
+   16 body_no_header: DEBBODY . desc_no_header FINBODY
+
+    DEBLIG  décalage et aller à l'état 4
+
+    ligne_header      aller à l'état 8
+    desc_with_header  aller à l'état 45
+    desc_no_header    aller à l'état 46
+    liste_lignes      aller à l'état 12
+    ligne             aller à l'état 13
+
+
+État 25
+
+    3 tableau: DEBTAB legende headers . body_no_header FINTAB
+
+    DEBBODY  décalage et aller à l'état 30
+
+    body_no_header  aller à l'état 47
+
+
+État 26
+
+    4 tableau: DEBTAB legende body_with_header . FINTAB
+
+    FINTAB  décalage et aller à l'état 48
+
+
+État 27
+
+    5 tableau: DEBTAB legende body_no_header . FINTAB
+
+    FINTAB  décalage et aller à l'état 49
+
+
+État 28
+
+   21 ligne: DEBLIG . liste_cells FINLIG
+
+    DEBCEL  décalage et aller à l'état 16
+
+    liste_cells  aller à l'état 19
+    cell         aller à l'état 20
+
+
+État 29
+
+   17 desc_with_header: ligne_header liste_lignes .
+
+    $défaut  réduction par utilisation de la règle 17 (desc_with_header)
+
+
+État 30
+
+   16 body_no_header: DEBBODY . desc_no_header FINBODY
+
+    DEBLIG  décalage et aller à l'état 28
+
+    desc_no_header  aller à l'état 46
+    liste_lignes    aller à l'état 12
+    ligne           aller à l'état 13
+
+
+État 31
+
+    6 tableau: DEBTAB header body_no_header . FINTAB
+
+    FINTAB  décalage et aller à l'état 50
+
+
+État 32
+
+    8 tableau: DEBTAB desc_with_header FINTAB .
+
+    $défaut  réduction par utilisation de la règle 8 (tableau)
+
+
+État 33
+
+    7 tableau: DEBTAB desc_no_header FINTAB .
+
+    $défaut  réduction par utilisation de la règle 7 (tableau)
+
+
+État 34
+
+   20 liste_lignes: ligne liste_lignes .
+
+    $défaut  réduction par utilisation de la règle 20 (liste_lignes)
+
+
+État 35
+
+   24 cell: DEBCEL CONTENU . FINCEL
+
+    FINCEL  décalage et aller à l'état 51
+
+
+État 36
+
+   25 cell: DEBCEL tableau . FINCEL
+
+    FINCEL  décalage et aller à l'état 52
+
+
+État 37
+
+   11 ligne_header: DEBLIG liste_header FINLIG .
+
+    $défaut  réduction par utilisation de la règle 11 (ligne_header)
+
+
+État 38
+
+   13 liste_header: header liste_header .
+
+    $défaut  réduction par utilisation de la règle 13 (liste_header)
+
+
+État 39
+
+   21 ligne: DEBLIG liste_cells FINLIG .
+
+    $défaut  réduction par utilisation de la règle 21 (ligne)
+
+
+État 40
+
+   23 liste_cells: cell liste_cells .
+
+    $défaut  réduction par utilisation de la règle 23 (liste_cells)
+
+
+État 41
+
+   14 header: DEBCELENT CONTENU FINCELENT .
+
+    $défaut  réduction par utilisation de la règle 14 (header)
+
+
+État 42
+
+    9 legende: DEBCAP CONTENU FINCAP .
+
+    $défaut  réduction par utilisation de la règle 9 (legende)
+
+
+État 43
+
+   11 ligne_header: DEBLIG . liste_header FINLIG
+
+    DEBCELENT  décalage et aller à l'état 5
+
+    liste_header  aller à l'état 17
+    header        aller à l'état 18
+
+
+État 44
+
+   10 headers: DEBHEAD ligne_header . FINHEAD
+
+    FINHEAD  décalage et aller à l'état 53
+
+
+État 45
+
+   15 body_with_header: DEBBODY desc_with_header . FINBODY
+
+    FINBODY  décalage et aller à l'état 54
+
+
+État 46
+
+   16 body_no_header: DEBBODY desc_no_header . FINBODY
+
+    FINBODY  décalage et aller à l'état 55
+
+
+État 47
+
+    3 tableau: DEBTAB legende headers body_no_header . FINTAB
+
+    FINTAB  décalage et aller à l'état 56
+
+
+État 48
+
+    4 tableau: DEBTAB legende body_with_header FINTAB .
+
+    $défaut  réduction par utilisation de la règle 4 (tableau)
+
+
+État 49
+
+    5 tableau: DEBTAB legende body_no_header FINTAB .
+
+    $défaut  réduction par utilisation de la règle 5 (tableau)
+
+
+État 50
+
+    6 tableau: DEBTAB header body_no_header FINTAB .
+
+    $défaut  réduction par utilisation de la règle 6 (tableau)
+
+
+État 51
+
+   24 cell: DEBCEL CONTENU FINCEL .
+
+    $défaut  réduction par utilisation de la règle 24 (cell)
+
+
+État 52
+
+   25 cell: DEBCEL tableau FINCEL .
+
+    $défaut  réduction par utilisation de la règle 25 (cell)
+
+
+État 53
+
+   10 headers: DEBHEAD ligne_header FINHEAD .
+
+    $défaut  réduction par utilisation de la règle 10 (headers)
+
+
+État 54
+
+   15 body_with_header: DEBBODY desc_with_header FINBODY .
+
+    $défaut  réduction par utilisation de la règle 15 (body_with_header)
+
+
+État 55
+
+   16 body_no_header: DEBBODY desc_no_header FINBODY .
+
+    $défaut  réduction par utilisation de la règle 16 (body_no_header)
+
+
+État 56
+
+    3 tableau: DEBTAB legende headers body_no_header FINTAB .
+
+    $défaut  réduction par utilisation de la règle 3 (tableau)
