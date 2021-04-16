@@ -15,6 +15,7 @@ void addElement(Array *a, char *value)
     s->x = X;
     s->y = Y;
     s->type = currentType;
+    s->nbTab = currentTab;
     s->text = (char *)malloc(yyleng * sizeof(char));
     strcpy(s->text, value);
 
@@ -36,12 +37,18 @@ void printArray(Array *a)
         printf(" x:%d", a->tab[i]->x);
         printf(" y:%d", a->tab[i]->y);
         printf(" type:%d", a->tab[i]->type);
+        printf(" nbTab:%d", a->tab[i]->nbTab);
         printf("\n");
     }
 }
 
 void deleteArray(Array *a)
 {
+    for (int i = 0; i < a->size; i++)
+    {
+        free(a->tab[i]->text);
+        free(a->tab[i]);
+    }
     free(a->tab);
     a->tab = NULL;
     a->size = a->capacite = 0;

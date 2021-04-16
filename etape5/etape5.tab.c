@@ -143,7 +143,15 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+union YYSTYPE
+{
+#line 10 "etape5.yacc"
+ char* str; 
+
+#line 152 "etape5.tab.cacc"
+
+};
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
@@ -517,9 +525,9 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    18,    18,    19,    22,    23,    24,    25,    26,    27,
-      30,    33,    36,    39,    40,    43,    46,    49,    52,    55,
-      58,    59,    62,    65,    66,    69,    70
+       0,    21,    21,    22,    25,    26,    27,    28,    29,    30,
+      33,    36,    39,    42,    43,    46,    49,    52,    55,    58,
+      61,    62,    65,    68,    69,    72,    73
 };
 #endif
 
@@ -1341,151 +1349,151 @@ yyreduce:
   switch (yyn)
     {
   case 3:
-#line 19 "etape5.yacc"
+#line 22 "etape5.yacc"
                                                         { }
-#line 1347 "etape5.tab.cacc"
+#line 1355 "etape5.tab.cacc"
     break;
 
   case 4:
-#line 22 "etape5.yacc"
-                                                        {  }
-#line 1353 "etape5.tab.cacc"
+#line 25 "etape5.yacc"
+                                                        { X=0; Y=0; currentTab++;}
+#line 1361 "etape5.tab.cacc"
     break;
 
   case 5:
-#line 23 "etape5.yacc"
-                                                        {  }
-#line 1359 "etape5.tab.cacc"
+#line 26 "etape5.yacc"
+                                                        { X=0; Y=0; currentTab++;}
+#line 1367 "etape5.tab.cacc"
     break;
 
   case 6:
-#line 24 "etape5.yacc"
-                                                        {  }
-#line 1365 "etape5.tab.cacc"
+#line 27 "etape5.yacc"
+                                                        { X=0; Y=0; currentTab++;}
+#line 1373 "etape5.tab.cacc"
     break;
 
   case 7:
-#line 25 "etape5.yacc"
-                                                        {  }
-#line 1371 "etape5.tab.cacc"
+#line 28 "etape5.yacc"
+                                                        { X=0; Y=0; currentTab++;}
+#line 1379 "etape5.tab.cacc"
     break;
 
   case 8:
-#line 26 "etape5.yacc"
-                                                        {  }
-#line 1377 "etape5.tab.cacc"
+#line 29 "etape5.yacc"
+                                                        { X=0; Y=0; currentTab++;}
+#line 1385 "etape5.tab.cacc"
     break;
 
   case 9:
-#line 27 "etape5.yacc"
-                                                        {  }
-#line 1383 "etape5.tab.cacc"
+#line 30 "etape5.yacc"
+                                                        { X=0; Y=0; currentTab++;}
+#line 1391 "etape5.tab.cacc"
     break;
 
   case 10:
-#line 30 "etape5.yacc"
-                                                        { printf("caption\n");}
-#line 1389 "etape5.tab.cacc"
+#line 33 "etape5.yacc"
+                                                        { X=0; currentType = 1; addElement(tab, (yyvsp[-1].str));}
+#line 1397 "etape5.tab.cacc"
     break;
 
   case 11:
-#line 33 "etape5.yacc"
+#line 36 "etape5.yacc"
                                                         { }
-#line 1395 "etape5.tab.cacc"
+#line 1403 "etape5.tab.cacc"
     break;
 
   case 12:
-#line 36 "etape5.yacc"
-                                                        { printf("ligne header\n");}
-#line 1401 "etape5.tab.cacc"
+#line 39 "etape5.yacc"
+                                                        { Y++; X=0;}
+#line 1409 "etape5.tab.cacc"
     break;
 
   case 13:
-#line 39 "etape5.yacc"
+#line 42 "etape5.yacc"
                                                         { }
-#line 1407 "etape5.tab.cacc"
+#line 1415 "etape5.tab.cacc"
     break;
 
   case 14:
-#line 40 "etape5.yacc"
+#line 43 "etape5.yacc"
                                                         { }
-#line 1413 "etape5.tab.cacc"
+#line 1421 "etape5.tab.cacc"
     break;
 
   case 15:
-#line 43 "etape5.yacc"
-                                                        { printf("cell ent\n");}
-#line 1419 "etape5.tab.cacc"
+#line 46 "etape5.yacc"
+                                                        { X++; currentType = 2; addElement(tab, (yyvsp[-1].str));}
+#line 1427 "etape5.tab.cacc"
     break;
 
   case 16:
-#line 46 "etape5.yacc"
+#line 49 "etape5.yacc"
                                                         { }
-#line 1425 "etape5.tab.cacc"
+#line 1433 "etape5.tab.cacc"
     break;
 
   case 17:
-#line 49 "etape5.yacc"
+#line 52 "etape5.yacc"
                                                         { }
-#line 1431 "etape5.tab.cacc"
+#line 1439 "etape5.tab.cacc"
     break;
 
   case 18:
-#line 52 "etape5.yacc"
+#line 55 "etape5.yacc"
                                                         { }
-#line 1437 "etape5.tab.cacc"
+#line 1445 "etape5.tab.cacc"
     break;
 
   case 19:
-#line 55 "etape5.yacc"
+#line 58 "etape5.yacc"
                                                         { }
-#line 1443 "etape5.tab.cacc"
+#line 1451 "etape5.tab.cacc"
     break;
 
   case 20:
-#line 58 "etape5.yacc"
+#line 61 "etape5.yacc"
                                                         { }
-#line 1449 "etape5.tab.cacc"
+#line 1457 "etape5.tab.cacc"
     break;
 
   case 21:
-#line 59 "etape5.yacc"
+#line 62 "etape5.yacc"
                                                         { }
-#line 1455 "etape5.tab.cacc"
+#line 1463 "etape5.tab.cacc"
     break;
 
   case 22:
-#line 62 "etape5.yacc"
-                                                        { printf("ligne\n");}
-#line 1461 "etape5.tab.cacc"
+#line 65 "etape5.yacc"
+                                                        { X=0; Y++;}
+#line 1469 "etape5.tab.cacc"
     break;
 
   case 23:
-#line 65 "etape5.yacc"
+#line 68 "etape5.yacc"
                                                         { }
-#line 1467 "etape5.tab.cacc"
+#line 1475 "etape5.tab.cacc"
     break;
 
   case 24:
-#line 66 "etape5.yacc"
+#line 69 "etape5.yacc"
                                                         { }
-#line 1473 "etape5.tab.cacc"
+#line 1481 "etape5.tab.cacc"
     break;
 
   case 25:
-#line 69 "etape5.yacc"
-                                                        { printf("cellule\n");}
-#line 1479 "etape5.tab.cacc"
+#line 72 "etape5.yacc"
+                                                        { X++; currentType = 3; addElement(tab, (yyvsp[-1].str));}
+#line 1487 "etape5.tab.cacc"
     break;
 
   case 26:
-#line 70 "etape5.yacc"
+#line 73 "etape5.yacc"
                                                         { printf("cellule avec tableau\n");}
-#line 1485 "etape5.tab.cacc"
+#line 1493 "etape5.tab.cacc"
     break;
 
 
-#line 1489 "etape5.tab.cacc"
+#line 1497 "etape5.tab.cacc"
 
       default: break;
     }
@@ -1717,7 +1725,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 73 "etape5.yacc"
+#line 76 "etape5.yacc"
 
 
 
@@ -1729,14 +1737,52 @@ int yyerror(void)
 
 extern FILE *yyin;
 
+void convertTable(Array *a, FILE *fichier)
+{
+    int fileX = 1;
+    int fileY = 1;
+
+    for (int i = 0; i < a->size; i++)
+    {
+        Element *current = a->tab[i];
+        if (i-1 > 0 && a->tab[i-1]->y != current->y)
+        {
+            fputs("\n", fichier);
+        }
+
+        if (i-1 > 0 && a->tab[i-1]->nbTab != current->nbTab)
+        {
+            fputs("\n", fichier);
+        }
+
+        fputs(current->text, fichier);
+        
+        if (i+1 < a->size && a->tab[i+1]->y == current->y)
+        {
+            fputs(";", fichier);
+        }
+
+        if (current->type == 1)
+        {
+            fputs("\n", fichier);
+        }
+    }
+}
+
 int main(void)
 {
     X = 1;
     Y = 1;
+    currentTab = 1;
     tab = (Array*)malloc(1 * sizeof(Array));
     initArray(tab, 5);
     yyin = stdin;
     yyparse();
     printArray(tab);
+
+    FILE *f = fopen("output.csv", "w+");
+    convertTable(tab, f);
+    fclose(f);
+
     deleteArray(tab);
 }

@@ -512,11 +512,12 @@ char *yytext;
 #line 2 "etape5.lex"
     #include <stdio.h>
     #include <stdlib.h>
+    #include <string.h>
     #include "struct.h"
     #include "etape5.tab.h"
-#line 518 "lex.yy.c"
+#line 519 "lex.yy.c"
 
-#line 520 "lex.yy.c"
+#line 521 "lex.yy.c"
 
 #define INITIAL 0
 #define contenu 1
@@ -734,9 +735,9 @@ YY_DECL
 		}
 
 	{
-#line 24 "etape5.lex"
+#line 25 "etape5.lex"
 
-#line 740 "lex.yy.c"
+#line 741 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -796,98 +797,98 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 25 "etape5.lex"
+#line 26 "etape5.lex"
 {return DEBTAB;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 26 "etape5.lex"
+#line 27 "etape5.lex"
 {return FINTAB;}
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 27 "etape5.lex"
-{return DEBLIG;}
+#line 28 "etape5.lex"
+{ return DEBLIG;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 28 "etape5.lex"
+#line 29 "etape5.lex"
 {return FINLIG;}
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 29 "etape5.lex"
+#line 30 "etape5.lex"
 {BEGIN(contenu); return DEBCEL;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 30 "etape5.lex"
+#line 31 "etape5.lex"
 {BEGIN(INITIAL); return FINCEL;}
 	YY_BREAK
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 31 "etape5.lex"
+#line 32 "etape5.lex"
 {return DEBHEAD;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 32 "etape5.lex"
+#line 33 "etape5.lex"
 {return FINHEAD;}
 	YY_BREAK
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 33 "etape5.lex"
+#line 34 "etape5.lex"
 {return DEBBODY;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 34 "etape5.lex"
+#line 35 "etape5.lex"
 {return FINBODY;}
 	YY_BREAK
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 35 "etape5.lex"
-{currentType = 1; BEGIN(contenu); return DEBCAP;}
+#line 36 "etape5.lex"
+{BEGIN(contenu); return DEBCAP;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 36 "etape5.lex"
+#line 37 "etape5.lex"
 {BEGIN(INITIAL); return FINCAP;}
 	YY_BREAK
 case 13:
 /* rule 13 can match eol */
 YY_RULE_SETUP
-#line 37 "etape5.lex"
-{X++; currentType = 2; BEGIN(contenu); return DEBCELENT;}
+#line 38 "etape5.lex"
+{BEGIN(contenu); return DEBCELENT;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 38 "etape5.lex"
+#line 39 "etape5.lex"
 {BEGIN(INITIAL);  return FINCELENT;}
 	YY_BREAK
 case 15:
 /* rule 15 can match eol */
 YY_RULE_SETUP
-#line 39 "etape5.lex"
-{addElement(tab, yytext); return CONTENU;}
+#line 40 "etape5.lex"
+{yylval.str = strdup(yytext); return CONTENU;}
 	YY_BREAK
 case 16:
 /* rule 16 can match eol */
 YY_RULE_SETUP
-#line 40 "etape5.lex"
+#line 41 "etape5.lex"
 ;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 41 "etape5.lex"
+#line 42 "etape5.lex"
 ECHO;
 	YY_BREAK
-#line 891 "lex.yy.c"
+#line 892 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(contenu):
 	yyterminate();
@@ -1893,5 +1894,5 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 41 "etape5.lex"
+#line 42 "etape5.lex"
 

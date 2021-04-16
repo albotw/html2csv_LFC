@@ -1,0 +1,11 @@
+Yann TROU
+Wassim DJELLAT
+
+compilation:
+make etape5
+
+éxécution
+./etape5 < testValide.html
+
+résultat:
+cat output.csv

@@ -1,5 +1,5 @@
 etape5: etape5.yacc etape5.lex struct.c struct.h
-	bison -d -v etape5.yacc
+	bison -d etape5.yacc
 	flex etape5.lex
 	mv etape5.tab.hacc etape5.tab.h
 	mv etape5.tab.cacc etape5.tab.c
