@@ -5,3 +5,4 @@ Projet de Langages Formels et Compilation.
 Technos:
 * Lex (flex)
 * Yacc (bison)
+* C
